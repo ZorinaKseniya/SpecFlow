@@ -21,12 +21,14 @@ namespace SpecFlowProject
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Find Pet")]
+    [NUnit.Framework.CategoryAttribute("nullStringConversion")]
     public partial class FindPetFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "nullStringConversion"};
         
 #line 1 "FindPet.feature"
 #line hidden
@@ -36,7 +38,8 @@ namespace SpecFlowProject
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Find Pet", "\tAs a person who wants to buy a pet \r\n\tI want to get information about them\r\n\tSo " +
-                    "I can decide if i like this pet", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "I can decide if i like this pet", ProgrammingLanguage.CSharp, new string[] {
+                        "nullStringConversion"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -77,13 +80,30 @@ namespace SpecFlowProject
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("find existing pet by id")]
         [NUnit.Framework.CategoryAttribute("positive")]
-        public virtual void FindExistingPetById()
+        [NUnit.Framework.TestCaseAttribute("33", "1", "dog", "Bobik", "abc", "7", "tag1", "available", "33", null)]
+        [NUnit.Framework.TestCaseAttribute("77", "2", "cat", "Kittie", "abc", "6", "tag2", "pending", "77", null)]
+        [NUnit.Framework.TestCaseAttribute("99", "2", "cat", "Basilio", "abc", "6", "tag3", "sold", "99", null)]
+        public virtual void FindExistingPetById(string id, string categoryId, string categoryName, string name, string photoUrls, string tagsId, string tagsName, string status, string idToSearch, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "positive"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("id", id);
+            argumentsOfScenario.Add("categoryId", categoryId);
+            argumentsOfScenario.Add("categoryName", categoryName);
+            argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("photoUrls", photoUrls);
+            argumentsOfScenario.Add("tagsId", tagsId);
+            argumentsOfScenario.Add("tagsName", tagsName);
+            argumentsOfScenario.Add("status", status);
+            argumentsOfScenario.Add("idToSearch", idToSearch);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("find existing pet by id", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -103,14 +123,15 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
-    testRunner.Given("i have added my pet to store with id 33", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 9
- testRunner.When("i try to find him by id 33", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given(string.Format("i have added my pet to store with parameters {0}, {1}, {2}, {3}, {4}, {5}, {6}, {" +
+                            "7}", id, categoryId, categoryName, name, photoUrls, tagsId, tagsName, status), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.Then("i get my pet with id 33", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When(string.Format("i try to find them with id {0}", idToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
+ testRunner.Then(string.Format("i get my pet with correct parametres {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", id, categoryId, categoryName, name, photoUrls, tagsId, tagsName, status), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -125,7 +146,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "negative"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("get 400 code when pet with given id does not exists", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+#line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -145,13 +166,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 24
     testRunner.Given("i have not added pet to store with id 55", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 25
  testRunner.When("i try to find pet by id 55", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 26
  testRunner.Then("i get NotFound", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
