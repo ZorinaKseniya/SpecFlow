@@ -27,7 +27,7 @@ namespace SpecFlowProject.Steps
         }
 
         protected HttpResponseMessage _response;
-        protected readonly HttpClient _client = new HttpClient(Handler.CreateHandler());
+        protected readonly HttpClient _client = HttpClientHelper.Create();
         protected readonly static Settings _settings;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using FluentAssertions.Json;
+using SpecFlowProject.Entities;
 using SpecFlowProject.Helpers;
 using System;
 using System.Net;
@@ -13,8 +14,10 @@ namespace SpecFlowProject.Steps
     [Binding]
     public class CreateAnOrderSteps: BaseSteps
     {
+        private HttpResponseMessage _responseForInvalidInput;
+        private string _expectedResponse;
         private string _jsonRequest;
-        private string _jsonPostPet = @"
+        private const string _jsonPostPet = @"
         {
           ""id"": #id#,
           ""category"": {
@@ -33,26 +36,13 @@ namespace SpecFlowProject.Steps
           ],
           ""status"": ""available""
         }";
-        private HttpResponseMessage _responseForInvalidInput;
-        private string _expectedResponse;
         
-        public string SerealizeJson (int id, int petId, int quantity, DateTime shipDate, string status, bool complete)
-        {
-            var order = new Order(id, petId, quantity, shipDate, status, complete);
-            var serializeOptions = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true,
-                IgnoreNullValues = true
-
-            };
-            return JsonSerializer.Serialize(order, serializeOptions);
-        }
         [Given(@"a pet with (.*) has been added to store")]
-        public async Task GivenAPetWithIdHasBeenAddedToStore(int id)
+        public Task GivenAPetWithIdHasBeenAddedToStore(int id)
         {
-            _client.PostAsync($"{_settings.HostName}//v2/pet", _jsonPostPet.Replace("#id#",id.ToString())).Wait();
+            return _client.PostAsync($"{_settings.HostName}/v2/pet", _jsonPostPet.Replace("#id#",id.ToString()));
         }
+
         [When(@"user makes an order for that pet with parameters (.*), (.*), (.*), (.*), (.*), (.*)")]
         public async Task WhenUserMakesAnOrderForThatPetWithParameters(int id, int petId, int quantity, DateTime shipDate, string status, bool complete)
         {
@@ -78,13 +68,27 @@ namespace SpecFlowProject.Steps
                 ""status"": ""a"",
                 ""complete"": f
              }";
-        _responseForInvalidInput = await _client.PostAsync($"{_settings.HostName}/v2/store/order", _postInvalidOrder);
+
+            _responseForInvalidInput = await _client.PostAsync($"{_settings.HostName}/v2/store/order", _postInvalidOrder);
         }
 
         [Then(@"an order is not saved")]
         public void ThenAnOrderIsNotSaved()
         {
             _responseForInvalidInput.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        public static string SerealizeJson(int id, int petId, int quantity, DateTime shipDate, string status, bool complete)
+        {
+            var order = new Order(id, petId, quantity, shipDate, status, complete);
+            var serializeOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true,
+                IgnoreNullValues = true
+            };
+
+            return JsonSerializer.Serialize(order, serializeOptions);
         }
     }
 }

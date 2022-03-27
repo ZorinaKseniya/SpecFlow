@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
 using FluentAssertions.Json;
 using SpecFlowProject.Helpers;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
@@ -12,7 +10,7 @@ namespace SpecFlowProject.Steps
     public class UpdatePetSteps: BaseSteps
     {
         private string _expectedResponse;
-        private string _jsonPostPet = @"
+        private const string _jsonPostPet = @"
         {
           ""id"": 14,
           ""category"": {
@@ -31,7 +29,8 @@ namespace SpecFlowProject.Steps
           ],
           ""status"": ""available""
         }";
-        private string _jsonUpdatePet = @"
+
+        private const string _jsonUpdatePet = @"
         {
           ""id"": 14,
           ""category"": {
@@ -52,9 +51,9 @@ namespace SpecFlowProject.Steps
         }";
 
         [Given(@"user has added his pet to store with one set of parameters")]
-        public async Task GivenUserHasAddedHisPetToStoreWithOneSetOfParameters()
+        public Task GivenUserHasAddedHisPetToStoreWithOneSetOfParameters()
         {
-            _client.PostAsync($"{_settings.HostName}/v2/pet", _jsonPostPet).Wait();
+            return _client.PostAsync($"{_settings.HostName}/v2/pet", _jsonPostPet);
         }
         
         [When(@"user tries to update all its parameters")]
