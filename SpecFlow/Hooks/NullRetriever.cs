@@ -12,7 +12,7 @@ namespace SpecFlowProject.Hooks
     [Binding]
     public static class Hooks1
     {
-        [BeforeTestRun]
+        [BeforeScenario]
         public static void BeforeTestRun()
         {
             Service.Instance.ValueRetrievers.Register(new NullValueRetriever("<null>"));

@@ -62,7 +62,7 @@ namespace SpecFlowProject
         [When(@"i try to update all its parameters")]
         public async Task WhenITryToUpdateAllItsParameters()
         {
-            _response = await _client.PostAsync("https://petstore.swagger.io/v2/pet", _jsonPostPet);
+            _response = await _client.PostAsync("https://petstore.swagger.io/v2/pet", _jsonUpdatePet);
         }
         
         [Then(@"all new parametres have been saved")]

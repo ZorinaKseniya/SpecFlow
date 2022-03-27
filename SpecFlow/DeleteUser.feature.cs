@@ -20,23 +20,23 @@ namespace SpecFlowProject
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Find Pet")]
-    public partial class FindPetFeature
+    [NUnit.Framework.DescriptionAttribute("Delete a User")]
+    public partial class DeleteAUserFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "FindPet.feature"
+#line 1 "DeleteUser.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Find Pet", "\tAs a person who wants to buy a pet \r\n\tI want to get information about them\r\n\tSo " +
-                    "I can decide if i like this pet", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Delete a User", "\tAs a manager of pet store \r\n\tI want to delete users\r\n\tSo that only good users ar" +
+                    "e stored", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,33 +75,14 @@ namespace SpecFlowProject
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("find existing pet by id")]
+        [NUnit.Framework.DescriptionAttribute("deleting existing user")]
         [NUnit.Framework.CategoryAttribute("positive")]
-        [NUnit.Framework.TestCaseAttribute("33", "1", "dog", "Bobik", "abc", "7", "tag1", "available", "33", null)]
-        [NUnit.Framework.TestCaseAttribute("77", "2", "cat", "Kittie", "abc", "6", "tag2", "pending", "77", null)]
-        [NUnit.Framework.TestCaseAttribute("99", "2", "cat", "Basilio", "abc", "6", "tag3", "sold", "99", null)]
-        [NUnit.Framework.TestCaseAttribute("88", "1", "<null>", "Bobik", "abc", "7", "tag1", "available", "33", null)]
-        [NUnit.Framework.TestCaseAttribute("11", "0", "cat", "Basilio", "abc", "5", "", "sold", "11", null)]
-        public virtual void FindExistingPetById(string id, string categoryId, string categoryName, string name, string photoUrls, string tagsId, string tagsName, string status, string idToSearch, string[] exampleTags)
+        public virtual void DeletingExistingUser()
         {
-            string[] @__tags = new string[] {
+            string[] tagsOfScenario = new string[] {
                     "positive"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("id", id);
-            argumentsOfScenario.Add("categoryId", categoryId);
-            argumentsOfScenario.Add("categoryName", categoryName);
-            argumentsOfScenario.Add("name", name);
-            argumentsOfScenario.Add("photoUrls", photoUrls);
-            argumentsOfScenario.Add("tagsId", tagsId);
-            argumentsOfScenario.Add("tagsName", tagsName);
-            argumentsOfScenario.Add("status", status);
-            argumentsOfScenario.Add("idToSearch", idToSearch);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("find existing pet by id", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("deleting existing user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -123,29 +104,31 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
-    testRunner.Given(string.Format("i have added my pet to store with parameters {0}, {1}, {2}, {3}, {4}, {5}, {6}, {" +
-                            "7}", id, categoryId, categoryName, name, photoUrls, tagsId, tagsName, status), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("user has been created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
- testRunner.When(string.Format("i try to find them with id {0}", idToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("petstore administrator is a logged in user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.Then(string.Format("i get my pet with correct parametres {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", id, categoryId, categoryName, name, photoUrls, tagsId, tagsName, status), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("petstore administrator tries to delete a user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
+ testRunner.Then("user is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("get 400 code when pet with given id does not exists")]
+        [NUnit.Framework.DescriptionAttribute("get 400 code when user with given id does not exist")]
         [NUnit.Framework.CategoryAttribute("negative")]
-        public virtual void Get400CodeWhenPetWithGivenIdDoesNotExists()
+        public virtual void Get400CodeWhenUserWithGivenIdDoesNotExist()
         {
             string[] tagsOfScenario = new string[] {
                     "negative"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("get 400 code when pet with given id does not exists", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 21
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("get 400 code when user with given id does not exist", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -165,14 +148,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 22
-    testRunner.Given("i have not added pet to store with id 55", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 17
+    testRunner.Given("petstore administrator has not logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 23
- testRunner.When("i try to find pet by id 55", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 18
+ testRunner.When("user try to find pet by id 55", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 24
- testRunner.Then("i get NotFound", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 19
+ testRunner.Then("user get NotFound", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

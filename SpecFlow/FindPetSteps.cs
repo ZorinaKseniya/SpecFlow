@@ -10,6 +10,7 @@ using TechTalk.SpecFlow.Assist;
 using System.Linq;
 using System.Collections.Generic;
 using FluentAssertions.Json;
+using TechTalk.SpecFlow.Assist.ValueRetrievers;
 
 namespace SpecFlowProject
 {
@@ -20,7 +21,8 @@ namespace SpecFlowProject
         private HttpClient _client = new HttpClient(Handler.CreateHandler());
         private HttpResponseMessage _response;
         private string _expectedResponse;
-        public String SerealizeJson(int? id, int categoryId, string categoryName, string name, string photoUrls, int tagsId, string tagsName, string status)
+
+        public string SerealizeJson(int id, int categoryId, string categoryName, string name, string photoUrls, int tagsId, string tagsName, string status)
         {
             if (tagsName == "null")
             {
@@ -43,10 +45,10 @@ namespace SpecFlowProject
             return JsonSerializer.Serialize(pet, serializeOptions);
         }
         [Given(@"i have added my pet to store with parameters (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*)")]
-        public async Task GivenIHaveAddedMyPetToStoreWithParameters(int id, int categoryId, string categoryName, string name, string photoUrls, int tagsId, string tagsName, string status)
+        public Task GivenIHaveAddedMyPetToStoreWithParameters(int id, int categoryId, string categoryName, string name, string photoUrls, int tagsId, string tagsName, string status)
         {
             _jsonRequest = SerealizeJson(id, categoryId, categoryName, name, photoUrls, tagsId, tagsName, status);
-            _client.PostAsync("https://petstore.swagger.io/v2/pet", _jsonRequest).Wait();
+            return _client.PostAsync("https://petstore.swagger.io/v2/pet", _jsonRequest);
             
         }
         [When(@"i try to find them with id (.*)")]
