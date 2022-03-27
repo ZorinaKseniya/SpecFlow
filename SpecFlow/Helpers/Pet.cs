@@ -39,7 +39,7 @@ namespace SpecFlowProject.Helpers
         {
             Id = id;
             Name = name;
-            PhotoUrls = new [] {photoUrls};
+            PhotoUrls = photoUrls.Split(",").ToArray();
             Status = status;
             Category = category;
             Tags = tags;

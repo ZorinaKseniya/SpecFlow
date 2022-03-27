@@ -1,11 +1,6 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using TechTalk.SpecFlow;
-using SpecFlowProject.Helpers;
 
 namespace SpecFlowProject.Helpers
 {
@@ -13,18 +8,18 @@ namespace SpecFlowProject.Helpers
     {
         public static HttpClientHandler CreateHandler()
         {
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
-            handler.ServerCertificateCustomValidationCallback = (_, _, _, _) => true;
-            handler.UseProxy = true;
-            handler.Proxy = new WebProxy
+            return new HttpClientHandler
             {
-                Address = new Uri("http://proxy.avp.ru"),
-                BypassProxyOnLocal = true,
-                UseDefaultCredentials = true
+                UseDefaultCredentials = true,
+                ServerCertificateCustomValidationCallback = (_, _, _, _) => true,
+                UseProxy = true,
+                Proxy = new WebProxy
+                {
+                    Address = new Uri("http://proxy.avp.ru"),
+                    BypassProxyOnLocal = true,
+                    UseDefaultCredentials = true
+                }
             };
-            return handler;
         }
     }
 }
-
