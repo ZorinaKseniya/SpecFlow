@@ -1,4 +1,5 @@
-﻿Feature: log in
+﻿@ignore
+Feature: log in
 
   In order to access my account to play
   As a user of the website

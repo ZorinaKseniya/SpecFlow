@@ -5,8 +5,8 @@
 
 @positive
 Scenario Outline: update existing pet
-    Given user has added my pet to store with one set of parameters
-	When user try to update all its parameters 
+    Given user has added his pet to store with one set of parameters
+	When user tries to update all its parameters 
 	Then all new parametres have been saved
 
 

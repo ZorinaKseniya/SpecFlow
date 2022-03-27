@@ -1,4 +1,5 @@
-﻿Feature: registration
+﻿@ignore
+Feature: registration
   In order to plays Casino
   As a user
   I want to be able to register
