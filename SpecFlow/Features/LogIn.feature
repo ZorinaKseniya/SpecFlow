@@ -9,7 +9,7 @@ Background:
 	Given user is at the Home Page
 	And navigates to Login Page
 
-@positive
+@positive@toAutomate
 Scenario Outline: Successful Manual Login with Valid Credentials
 	Given user with <userNameDb> and Password "PasswordWithSymbols1&" is registered
 	When user enters userName <userNameInput>
@@ -43,18 +43,18 @@ Scenario: Showing Password
 	When user clicks on ShowPassword icon
 	Then passoword "PasswordWithSymbols1&" is shown
 
-@positive
-Scenario: reseting password
+@positive@toAutomate
+Scenario: Reseting password
 	When user clicks on ForgottenYouPassword button
 	Then passwordRecovery window should display
 
 @positive
-Scenario: registering from login window
+Scenario: Registering from login window
 	When user clicks on RegisterNow button
 	Then registration window should display
 
 @positive
-Scenario: closing login window
+Scenario: Closing login window
 	When userclicks on close button
 	Then Home Page appears again
 

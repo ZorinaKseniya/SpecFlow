@@ -91,6 +91,7 @@ namespace SpecFlowProject.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Successful Manual Login with Valid Credentials")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("toAutomate")]
         [NUnit.Framework.TestCaseAttribute("13symbolsMax1", "13symbolsMax1", null)]
         [NUnit.Framework.TestCaseAttribute("min", "min", null)]
         [NUnit.Framework.TestCaseAttribute("CaSeChEcK", "casecheck", null)]
@@ -98,7 +99,8 @@ namespace SpecFlowProject.Features
         public void SuccessfulManualLoginWithValidCredentials(string userNameDb, string userNameInput, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "positive"};
+                    "positive",
+                    "toAutomate"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -226,14 +228,16 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("reseting password")]
+        [NUnit.Framework.DescriptionAttribute("Reseting password")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("toAutomate")]
         public void ResetingPassword()
         {
             string[] tagsOfScenario = new string[] {
-                    "positive"};
+                    "positive",
+                    "toAutomate"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("reseting password", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reseting password", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 47
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -258,14 +262,14 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("registering from login window")]
+        [NUnit.Framework.DescriptionAttribute("Registering from login window")]
         [NUnit.Framework.CategoryAttribute("positive")]
         public void RegisteringFromLoginWindow()
         {
             string[] tagsOfScenario = new string[] {
                     "positive"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("registering from login window", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registering from login window", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 52
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -290,14 +294,14 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("closing login window")]
+        [NUnit.Framework.DescriptionAttribute("Closing login window")]
         [NUnit.Framework.CategoryAttribute("positive")]
         public void ClosingLoginWindow()
         {
             string[] tagsOfScenario = new string[] {
                     "positive"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("closing login window", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Closing login window", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 57
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

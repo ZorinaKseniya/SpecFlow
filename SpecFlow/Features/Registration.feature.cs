@@ -90,10 +90,12 @@ namespace SpecFlowProject.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("SignUp only after confirming e-mail")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("toAutomate")]
         public void SignUpOnlyAfterConfirmingE_Mail()
         {
             string[] tagsOfScenario = new string[] {
-                    "positive"};
+                    "positive",
+                    "toAutomate"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("SignUp only after confirming e-mail", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 12
@@ -125,13 +127,15 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("SignUp with valid fields")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("toAutomate")]
         [NUnit.Framework.TestCaseAttribute("very.long.long.LONG.long.long.long@example.com", "min", "8symbols", "<currentDate-18years>", null)]
         [NUnit.Framework.TestCaseAttribute("sh@o.rt", "13symbolsMax", "specialcharacters@#!", "01-01-1900", null)]
         [NUnit.Framework.TestCaseAttribute("1$2*@numbersandsymbols.ru", "BIGLETTERS", "verylongpasswordverylongpassword@", "31-12-1997", null)]
         public void SignUpWithValidFields(string e_Mail, string nickName, string password, string dateOfBirth, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "positive"};
+                    "positive",
+                    "toAutomate"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -407,10 +411,12 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("user with not existing e-mail can not be registered")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("toAutomate")]
         public void UserWithNotExistingE_MailCanNotBeRegistered()
         {
             string[] tagsOfScenario = new string[] {
-                    "positive"};
+                    "positive",
+                    "toAutomate"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("user with not existing e-mail can not be registered", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 100

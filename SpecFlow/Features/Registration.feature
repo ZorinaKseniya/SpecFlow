@@ -8,13 +8,13 @@ Background:
 	Given user is at the Home Page
 	And navigates to Registration Page
 
-@positive
+@positive@toAutomate
 Scenario:  SignUp only after confirming e-mail
     Given user has requested account confirmation per Email
 	When user follows Confirmation link in the email
 	Then user should be signed up
 
-@positive
+@positive@toAutomate
 Scenario Outline:  SignUp with valid fields
 	When user enters <e-mail> in email field
 	And user enters <nickname> in nickname field
@@ -96,7 +96,7 @@ Examples:
   | dateOfBirth | 29-February-2002  | Invalid data.                                                                      |
   | captcha     | wrongImageSelected| Please try again                                                                   |
   
-@positive
+@positive@toAutomate
 Scenario: user with not existing e-mail can not be registered
 	Given no e-mail "thisEmailDoes@not.exists" exists
 	When user filles in all fields correctly
